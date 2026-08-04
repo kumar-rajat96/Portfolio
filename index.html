@@ -53,6 +53,8 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      transform-style: preserve-3d;
+      perspective: 1000px;
     }
 
     .glass-panel-hover {
@@ -62,8 +64,7 @@
     .glass-panel-hover:hover {
       background: rgba(30, 41, 59, 0.85);
       border-color: rgba(59, 130, 246, 0.35);
-      box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.2);
-      transform: translateY(-2px);
+      box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.25);
     }
 
     .grid-background {
@@ -71,6 +72,35 @@
       background-image: 
         linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    /* Mindblown Glow Animations */
+    @keyframes mindblownGlow {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(168, 85, 247, 0.4), 0 0 30px rgba(59, 130, 246, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(236, 72, 153, 0.6), 0 0 45px rgba(14, 165, 233, 0.5);
+      }
+    }
+
+    .mindblown-btn-glow {
+      animation: mindblownGlow 3s infinite ease-in-out;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+      50% { transform: translateY(-15px) rotate(180deg); opacity: 1; }
+      100% { transform: translateY(0px) rotate(360deg); opacity: 0.8; }
+    }
+
+    .floating-badge {
+      animation: floatParticle 4s infinite ease-in-out;
+    }
+
+    /* Range slider custom styling */
+    input[type=range] {
+      accent-color: #3b82f6;
     }
 
     /* Print Styles for Resume Modal */
@@ -158,11 +188,14 @@
 
         <!-- Right CTAs -->
         <div class="hidden sm:flex items-center gap-3">
-          <button onclick="toggleResumeModal(true)" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all hover:border-blue-500/50 hover:text-white group">
+          <button onclick="triggerMindBlown()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white shadow-lg shadow-purple-500/25 transition-all hover:scale-105 mindblown-btn-glow">
+            <span>🤯 Mindblown Cutover</span>
+          </button>
+          <button onclick="toggleResumeModal(true)" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all hover:border-blue-500/50 hover:text-white group">
             <i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-400 group-hover:scale-110 transition-transform"></i>
             <span>Resume PDF</span>
           </button>
-          <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-lg shadow-blue-500/20 transition-all hover:scale-105">
+          <a href="#contact" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-lg shadow-blue-500/20 transition-all hover:scale-105">
             <span>Get in Touch</span>
             <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
           </a>
@@ -200,6 +233,7 @@
 
   <!-- ================= 2. HERO SECTION ================= -->
   <section id="overview" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden grid-background">
+    <canvas id="hero-particle-canvas" class="absolute inset-0 pointer-events-none z-0 opacity-60"></canvas>
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-600/10 blur-[130px] pointer-events-none rounded-full"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -211,13 +245,13 @@
             <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
             <span>RISE with SAP Specialist</span>
             <span class="text-slate-600">•</span>
-            <span class="text-slate-300">S/4HANA Architect</span>
+            <span class="text-slate-300">SAP Database Administration</span>
             <span class="text-slate-600">•</span>
             <span class="text-slate-300">Performance Tuning</span>
           </div>
 
           <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
-            Architecting <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-sky-400 bg-clip-text text-transparent">Zero-Downtime</span> SAP Cloud Migrations
+            Engineered for Resilience: <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-sky-400 bg-clip-text text-transparent">SAP RISE Migrations & Core Database Excellence</span>
           </h1>
 
           <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl">
@@ -243,15 +277,19 @@
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-4 pt-4">
-            <a href="#projects" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-xl shadow-blue-600/25 transition-all hover:scale-[1.02]">
-              <span>Explore Featured Migrations</span>
+          <div class="flex flex-wrap items-center gap-3 pt-4">
+            <a href="#projects" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-xl shadow-blue-600/25 transition-all hover:scale-[1.02]">
+              <span>Explore Migrations</span>
               <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
 
-            <button onclick="toggleResumeModal(true)" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition-all hover:text-white">
+            <button onclick="triggerMindBlown()" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-purple-600/30 transition-all hover:scale-[1.05] mindblown-btn-glow">
+              <span>🤯 Launch Mindblown Cutover</span>
+            </button>
+
+            <button onclick="toggleResumeModal(true)" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition-all hover:text-white">
               <i data-lucide="file-text" class="w-4 h-4 text-blue-400"></i>
-              <span>View Full Resume PDF</span>
+              <span>Resume PDF</span>
             </button>
           </div>
 
@@ -982,12 +1020,12 @@
             <div class="space-y-3">
               <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
                 <h4 class="text-sm font-bold text-amber-300">Chairman's You Can Make A Difference Award</h4>
-                <p class="text-xs text-slate-300 mt-1">Recognizing outstanding technical initiative and system reliability during critical RISE migrations.</p>
+                <p class="text-xs text-slate-300 mt-1">Cost Efficient replacement of SAP monitoring</p>
               </div>
 
               <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
                 <h4 class="text-sm font-bold text-amber-300">Champion of the Month</h4>
-                <p class="text-xs text-slate-300 mt-1">Awarded for exceptional operational performance and rapid P1 incident resolution.</p>
+                <p class="text-xs text-slate-300 mt-1">EU/S4 consolidation project go-live and hypercare support</p>
               </div>
             </div>
           </div>
@@ -1309,6 +1347,157 @@
   </div>
 
 
+  <!-- ================= 13. MINDBLOWN PARTICLE EXPLOSION OVERLAY & INTERACTIVE MODAL ================= -->
+  <canvas id="mindblown-canvas" class="fixed inset-0 pointer-events-none z-[100] hidden"></canvas>
+
+  <div id="mindblown-modal" class="hidden fixed inset-0 z-[90] flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-xl overflow-y-auto">
+    <div class="bg-[#0b1329] border-2 border-purple-500/40 rounded-3xl w-full max-w-3xl flex flex-col shadow-[0_0_80px_rgba(168,85,247,0.3)] overflow-hidden my-auto animate-in fade-in zoom-in-95 duration-300">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between p-5 bg-gradient-to-r from-purple-950/80 via-slate-900 to-indigo-950/80 border-b border-purple-500/30">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-pink-600 to-blue-600 flex items-center justify-center text-white text-lg shadow-lg animate-bounce">
+            🤯
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-extrabold text-white tracking-tight">
+              Mindblown SAP S/4HANA System Accelerator
+            </h3>
+            <p class="text-xs text-purple-300">
+              Interactive SAP RISE Migration & DB Optimization Engine Simulation
+            </p>
+          </div>
+        </div>
+        <button onclick="toggleMindblownModal(false)" class="p-2 rounded-xl bg-slate-800/80 text-slate-400 hover:text-white border border-slate-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 sm:p-8 space-y-6 text-slate-200 text-xs sm:text-sm bg-slate-950/90">
+        
+        <!-- Live Benchmark Alert Banner -->
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-purple-900/30 via-indigo-900/20 to-blue-900/30 border border-purple-500/30 flex items-center justify-between flex-wrap gap-3">
+          <div class="flex items-center gap-3">
+            <div class="p-2.5 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30">
+              <i data-lucide="zap" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-purple-200">Real-World Case Benchmark (Colgate-Palmolive)</div>
+              <p class="text-[11px] text-slate-300">Slashed migration downtime by <strong class="text-emerald-400 font-bold">56%</strong> (3h 07m → 1h 21m) and dropped CPU load to <strong class="text-emerald-400 font-bold">20%</strong>!</p>
+            </div>
+          </div>
+          <button onclick="triggerParticleBurst()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-xs shadow-md transition-all hover:scale-105 flex items-center gap-1">
+            <span>Explode Confetti 🎉</span>
+          </button>
+        </div>
+
+        <!-- Interactive HANA Optimization Simulator -->
+        <div class="glass-panel p-5 rounded-2xl border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h4 class="text-sm font-extrabold text-white flex items-center gap-2">
+                <i data-lucide="cpu" class="w-4 h-4 text-blue-400"></i>
+                <span>Interactive SAP HANA DB Hint & Optimization Engine</span>
+              </h4>
+              <p class="text-xs text-slate-400">Drag the slider to apply DB Hints (USE_HEX_PLAN) and optimize SAP memory buffers live!</p>
+            </div>
+            <span id="opt-status-badge" class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              ⚡ Baseline Status (No Optimization)
+            </span>
+          </div>
+
+          <!-- Slider -->
+          <div class="space-y-2 pt-2">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-slate-400">Optimization Level:</span>
+              <span id="slider-val-text" class="text-blue-400 font-bold">0% (Unoptimized SQL)</span>
+            </div>
+            <input 
+              type="range" 
+              id="hana-opt-slider" 
+              min="0" 
+              max="100" 
+              value="0" 
+              oninput="updateHanaOptSim(this.value)"
+              class="w-full h-2.5 bg-slate-900 rounded-lg appearance-none cursor-pointer border border-slate-700"
+            />
+          </div>
+
+          <!-- Dynamic Output Metrics Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
+              <div class="text-[10px] text-slate-400 font-mono uppercase">Query Time</div>
+              <div id="sim-query-time" class="text-lg font-extrabold text-rose-400 font-mono mt-0.5">25.0 min</div>
+              <div id="sim-query-diff" class="text-[10px] text-slate-500 font-mono">Baseline</div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
+              <div class="text-[10px] text-slate-400 font-mono uppercase">HANA CPU Load</div>
+              <div id="sim-cpu-load" class="text-lg font-extrabold text-rose-400 font-mono mt-0.5">90% OOM</div>
+              <div id="sim-cpu-diff" class="text-[10px] text-slate-500 font-mono">High Crash Risk</div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
+              <div class="text-[10px] text-slate-400 font-mono uppercase">System SLA</div>
+              <div id="sim-sla" class="text-lg font-extrabold text-amber-400 font-mono mt-0.5">94.5%</div>
+              <div id="sim-sla-diff" class="text-[10px] text-slate-500 font-mono">Sub-optimal</div>
+            </div>
+
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
+              <div class="text-[10px] text-slate-400 font-mono uppercase">Cutover Duration</div>
+              <div id="sim-cutover" class="text-lg font-extrabold text-rose-400 font-mono mt-0.5">3h 07m</div>
+              <div id="sim-cutover-diff" class="text-[10px] text-slate-500 font-mono">Standard Window</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Feature Highlight Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+            <div class="flex items-center gap-2 text-purple-400 font-bold text-xs">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+              <span>Zero Defect Movements</span>
+            </div>
+            <p class="text-[11px] text-slate-300">1,000+ mass transports imported safely across LA production landscapes using STMS & ActiveControl.</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+            <div class="flex items-center gap-2 text-blue-400 font-bold text-xs">
+              <i data-lucide="cloud" class="w-4 h-4"></i>
+              <span>AWS SES Mail Engine</span>
+            </div>
+            <p class="text-[11px] text-slate-300">Replaced legacy SMTP with AWS SES across 20+ production systems for instant delivery.</p>
+          </div>
+
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800 space-y-1">
+            <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs">
+              <i data-lucide="server" class="w-4 h-4"></i>
+              <span>Cloud Connector HA</span>
+            </div>
+            <p class="text-[11px] text-slate-300">Deployed HA Shadow instances & expanded JVM Heap to 4GB preventing thread deadlocks.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-slate-900 border-t border-slate-800 flex items-center justify-between flex-wrap gap-2">
+        <span class="text-xs text-slate-400 font-mono">Validated Architecture | Rajat Kumar Enterprise Portfolio</span>
+        <div class="flex items-center gap-2">
+          <button onclick="toggleMindblownModal(false)" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold">
+            Close Simulation
+          </button>
+          <a href="#contact" onclick="toggleMindblownModal(false)" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold shadow-md">
+            Hire Rajat for RISE Migration
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
   <!-- ================= INLINE JAVASCRIPT LOGIC ================= -->
   <script>
     // Initialize Lucide icons
@@ -1328,6 +1517,248 @@
       } else {
         modal.classList.add('hidden');
       }
+    }
+
+    // Mindblown Modal Toggle & Particle Cannon Trigger
+    function triggerMindBlown() {
+      triggerParticleBurst();
+      toggleMindblownModal(true);
+    }
+
+    function toggleMindblownModal(show) {
+      const modal = document.getElementById('mindblown-modal');
+      if (show) {
+        modal.classList.remove('hidden');
+        lucide.createIcons();
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    // Particle Explosion Burst Engine (Confetti / High-Tech Spark Cannon)
+    let particleAnimationId = null;
+    function triggerParticleBurst() {
+      const canvas = document.getElementById('mindblown-canvas');
+      if (!canvas) return;
+      canvas.classList.remove('hidden');
+      
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#10b981', '#f59e0b', '#06b6d4'];
+
+      // Create 150 particles originating from center/top
+      const originX = window.innerWidth / 2;
+      const originY = window.innerHeight * 0.4;
+
+      for (let i = 0; i < 150; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 15 + 3;
+        particles.push({
+          x: originX,
+          y: originY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 4,
+          size: Math.random() * 8 + 3,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1,
+          decay: Math.random() * 0.015 + 0.008,
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 10
+        });
+      }
+
+      if (particleAnimationId) cancelAnimationFrame(particleAnimationId);
+
+      function render() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let activeCount = 0;
+
+        particles.forEach(p => {
+          if (p.alpha > 0) {
+            activeCount++;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.25; // gravity
+            p.alpha -= p.decay;
+            p.rotation += p.rotationSpeed;
+
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, p.alpha);
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.shadowColor = p.color;
+            ctx.shadowBlur = 10;
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 1.5);
+            ctx.restore();
+          }
+        });
+
+        if (activeCount > 0) {
+          particleAnimationId = requestAnimationFrame(render);
+        } else {
+          canvas.classList.add('hidden');
+        }
+      }
+
+      render();
+    }
+
+    // Hero Interactive Particle Network Background
+    function initHeroParticleCanvas() {
+      const canvas = document.getElementById('hero-particle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const numParticles = 45;
+      const particles = [];
+      const mouse = { x: -1000, y: -1000 };
+
+      window.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      for (let i = 0; i < numParticles; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: (Math.random() - 0.5) * 0.8,
+          radius: Math.random() * 2 + 1
+        });
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((p, index) => {
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+          // Draw node
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(59, 130, 246, 0.6)';
+          ctx.fill();
+
+          // Connect with nearby particles
+          for (let j = index + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(59, 130, 246, ${0.25 * (1 - dist / 120)})`;
+              ctx.lineWidth = 0.75;
+              ctx.stroke();
+            }
+          }
+
+          // Connect with mouse
+          const mdx = p.x - mouse.x;
+          const mdy = p.y - mouse.y;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(168, 85, 247, ${0.4 * (1 - mdist / 150)})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    // Interactive HANA Optimization Simulator Logic
+    function updateHanaOptSim(val) {
+      const pct = parseFloat(val) / 100;
+      
+      const queryTime = (25.0 - (25.0 - 3.2) * pct).toFixed(1);
+      const cpuLoad = Math.round(90 - (90 - 20) * pct);
+      const sla = (94.5 + (99.98 - 94.5) * pct).toFixed(2);
+      
+      // Cutover time: 3h 07m (187 mins) -> 1h 21m (81 mins)
+      const cutoverMins = Math.round(187 - (187 - 81) * pct);
+      const hours = Math.floor(cutoverMins / 60);
+      const mins = cutoverMins % 60;
+      const cutoverStr = `${hours}h ${mins < 10 ? '0' : ''}${mins}m`;
+
+      document.getElementById('slider-val-text').innerText = `${val}% (USE_HEX_PLAN Hint Applied)`;
+      
+      const queryEl = document.getElementById('sim-query-time');
+      queryEl.innerText = `${queryTime} min`;
+      queryEl.className = pct > 0.5 ? 'text-lg font-extrabold text-emerald-400 font-mono mt-0.5' : 'text-lg font-extrabold text-rose-400 font-mono mt-0.5';
+
+      const cpuEl = document.getElementById('sim-cpu-load');
+      cpuEl.innerText = `${cpuLoad}% ${pct > 0.7 ? 'Optimized' : 'Load'}`;
+      cpuEl.className = pct > 0.5 ? 'text-lg font-extrabold text-emerald-400 font-mono mt-0.5' : 'text-lg font-extrabold text-rose-400 font-mono mt-0.5';
+
+      const slaEl = document.getElementById('sim-sla');
+      slaEl.innerText = `${sla}%`;
+      slaEl.className = pct > 0.5 ? 'text-lg font-extrabold text-emerald-400 font-mono mt-0.5' : 'text-lg font-extrabold text-amber-400 font-mono mt-0.5';
+
+      const cutEl = document.getElementById('sim-cutover');
+      cutEl.innerText = cutoverStr;
+      cutEl.className = pct > 0.5 ? 'text-lg font-extrabold text-emerald-400 font-mono mt-0.5' : 'text-lg font-extrabold text-rose-400 font-mono mt-0.5';
+
+      const badge = document.getElementById('opt-status-badge');
+      if (pct < 0.3) {
+        badge.className = 'px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
+        badge.innerText = '⚡ Baseline Status (No Optimization)';
+      } else if (pct < 0.8) {
+        badge.className = 'px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30';
+        badge.innerText = '🚀 Buffer & Index Optimization Active';
+      } else {
+        badge.className = 'px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse';
+        badge.innerText = '🤯 MIND BLOWN: 87% Speed Gain (20% CPU Peak)';
+      }
+    }
+
+    // 3D Glass Card Tilt Effect
+    function init3DTilt() {
+      const cards = document.querySelectorAll('.glass-panel');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const rotateX = ((y - centerY) / centerY) * -6;
+          const rotateY = ((x - centerX) / centerX) * 6;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        });
+      });
     }
 
     // Filter Skills
@@ -1376,8 +1807,15 @@
     // Form Submission
     function handleFormSubmit(e) {
       e.preventDefault();
-      alert('Thank you for reaching out! Your inquiry has been recorded and Rajat Kumar will get back to you shortly.');
+      triggerParticleBurst();
+      alert('Thank you for reaching out! Your inquiry has been transmitted and Rajat Kumar will respond shortly.');
     }
+
+    // Initialize interactive canvas & 3D effects on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      initHeroParticleCanvas();
+      init3DTilt();
+    });
   </script>
 
 </body>

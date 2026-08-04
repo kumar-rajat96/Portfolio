@@ -165,14 +165,14 @@
 
         <!-- Center: Nav Links -->
         <nav class="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80 backdrop-blur-md">
-          <a href="#overview" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Overview</a>
-          <a href="#metrics" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Metrics</a>
-          <a href="#skills" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Core Stack</a>
-          <a href="#experience" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Experience</a>
-          <a href="#projects" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Case Studies</a>
-          <a href="#architecture" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Architecture</a>
-          <a href="#tcode-shell" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">TCode Shell</a>
-          <a href="#contact" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Contact</a>
+          <a href="#overview" class="nav-item px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Overview</a>
+          <a href="#metrics" class="nav-item px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Metrics</a>
+          <a href="#skills" class="nav-item px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Core Stack</a>
+          <a href="#experience" class="nav-item px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Experience</a>
+          <a href="#projects" class="nav-item px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Case Studies</a>
+          <a href="#architecture" class="nav-item px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Architecture</a>
+          <a href="#awards" class="nav-item px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Awards</a>
+          <a href="#contact" class="nav-item px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Contact</a>
         </nav>
 
         <!-- Right CTAs -->
@@ -206,7 +206,7 @@
         <a href="#experience" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Experience</a>
         <a href="#projects" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Case Studies</a>
         <a href="#architecture" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Architecture</a>
-        <a href="#tcode-shell" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">TCode Shell</a>
+        <a href="#awards" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Awards</a>
         <a href="#contact" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Contact</a>
       </div>
       <button onclick="toggleMobileMenu(); toggleResumeModal(true);" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 border border-slate-700">
@@ -876,139 +876,8 @@
   </section>
 
 
-  <!-- ================= 8. INTERACTIVE SAP TCODE TERMINAL ================= -->
-  <section id="tcode-shell" class="py-20 bg-[#020617]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400 mb-3">
-            <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
-            <span>Interactive SAP Command Reference</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            SAP Basis TCode & Administration Terminal
-          </h2>
-          <p class="text-sm text-slate-400 mt-2 max-w-2xl">
-            Quick-reference terminal highlighting core SAP Transaction Codes, SQL trace snippets, and transport commands.
-          </p>
-        </div>
-
-        <div class="relative w-full md:w-72">
-          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-          <input
-            type="text"
-            id="tcode-search"
-            onkeyup="filterTCodes()"
-            placeholder="Search TCode (e.g. ST04, SM12, SUM)..."
-            class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
-          />
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        <!-- TCode List Cards -->
-        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2" id="tcode-cards-container">
-          
-          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('SM12', 'Lock Entry Administration', 'SELECT * FROM ENQ_TAB WHERE MANDT = 100;')">
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nSM12</span>
-              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Lock Mgmt</span>
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1">Lock Entry Administration</h3>
-            <p class="text-xs text-slate-400">Display and release SAP lock entries to resolve table locking.</p>
-          </div>
-
-          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('SM13', 'Update Requests Monitor', 'V1 Update Status: OK | V2 Update Status: QUEUED')">
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nSM13</span>
-              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Lock Mgmt</span>
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1">Update Requests Monitor</h3>
-            <p class="text-xs text-slate-400">Monitor and re-process failed V1 and V2 asynchronous update tasks.</p>
-          </div>
-
-          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('SM66', 'Global Process Overview', 'STATUS: Running | TYPE: DIA | TIME: 180s | TABLE: BSEG')">
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nSM66</span>
-              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Performance</span>
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1">Global Work Process Overview</h3>
-            <p class="text-xs text-slate-400">Real-time visibility into running work processes across all app servers.</p>
-          </div>
-
-          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('ST04', 'Database Performance Monitor', 'HANA Memory Allocated: 256GB / 384GB | Hit Ratio: 99.8%')">
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nST04</span>
-              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Database</span>
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1">Database Performance Monitor</h3>
-            <p class="text-xs text-slate-400">Deep-dive SAP HANA / DB2 memory allocations & buffer hit ratios.</p>
-          </div>
-
-          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('ST05', 'SQL & Performance Trace', 'WITH HINT(USE_HEX_PLAN) SELECT * FROM ACDOCA...')">
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nST05</span>
-              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Performance</span>
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1">SQL & Performance Trace</h3>
-            <p class="text-xs text-slate-400">Activate SQL & RFC traces to analyze execution plans and apply DB Hints.</p>
-          </div>
-
-          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('STMS', 'Transport Management System', 'tp import <TR_ID> <SID> u128')">
-            <div class="flex items-center justify-between mb-2">
-              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nSTMS</span>
-              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Transports</span>
-            </div>
-            <h3 class="text-sm font-bold text-white mb-1">Transport Management System</h3>
-            <p class="text-xs text-slate-400">Administer transport routes and mass transport deployments across DEV/QA/PRD.</p>
-          </div>
-
-        </div>
-
-        <!-- Terminal Log Box -->
-        <div class="lg:col-span-5">
-          <div class="bg-[#020617] rounded-2xl border border-slate-800 p-5 font-mono text-xs shadow-2xl flex flex-col h-full justify-between space-y-4">
-            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-              <div class="flex items-center gap-2">
-                <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
-                <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
-                <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-                <span class="text-slate-400 text-[11px] ml-2">sapgui_tcode_shell.sh</span>
-              </div>
-              <span class="text-emerald-400 text-[10px] bg-emerald-500/10 px-2 py-0.5 rounded font-bold">CONNECTED: PRD_HANA_100</span>
-            </div>
-
-            <div class="space-y-3 py-2 text-slate-300 min-h-[180px]">
-              <div class="text-slate-500 text-[11px]"># SAP BASIS DBA COMMAND CONSOLE -- RAJAT KUMAR</div>
-              <div class="text-blue-400">&gt; ACTIVE LANDSCAPE: S/4HANA 2023 RISE ON AWS</div>
-              <div id="tcode-output" class="p-3 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 whitespace-pre-wrap leading-relaxed text-[11px]">
-                Click any TCode card on the left to simulate execution trace...
-              </div>
-            </div>
-
-            <div class="pt-3 border-t border-slate-800 space-y-2">
-              <div class="text-[11px] text-slate-400 flex items-center justify-between">
-                <span>Copy HEX DB Hint Command:</span>
-              </div>
-              <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">
-                <span class="truncate">WITH HINT(USE_HEX_PLAN) SELECT * FROM ACDOCA</span>
-                <button onclick="copyToClipboard('WITH HINT(USE_HEX_PLAN) SELECT * FROM ACDOCA', this)" class="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">
-                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ================= 9. AWARDS, CERTIFICATIONS & EDUCATION ================= -->
-  <section class="py-20 bg-slate-950/80 border-t border-slate-800">
+  <!-- ================= 8. AWARDS, CERTIFICATIONS & EDUCATION ================= -->
+  <section id="awards" class="py-20 bg-slate-950/80 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="mb-12">
@@ -1788,23 +1657,37 @@
       });
     }
 
-    // Filter TCodes
-    function filterTCodes() {
-      const query = document.getElementById('tcode-search').value.toLowerCase();
-      const cards = document.querySelectorAll('.tcode-card');
-      cards.forEach(card => {
-        if (card.textContent.toLowerCase().includes(query)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
+    // Active Section Scroll Highlight
+    function initActiveNavScroll() {
+      const navItems = document.querySelectorAll('.nav-item');
+      const sections = document.querySelectorAll('section[id]');
 
-    // Run TCode Log in Shell
-    function runTCodeLog(tcode, name, snippet) {
-      const output = document.getElementById('tcode-output');
-      output.innerHTML = `<span class="text-emerald-400">[SAP_CMD_EXEC] TCode: /n${tcode} (${name})</span>\nExecuting diagnostic trace... OK.\nResult snippet: ${snippet}`;
+      function updateActiveNav() {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + 120;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        navItems.forEach(item => {
+          const href = item.getAttribute('href');
+          if (href === `#${currentSectionId}`) {
+            item.classList.add('bg-blue-600', 'text-white', 'shadow-sm', 'shadow-blue-500/30');
+            item.classList.remove('text-slate-300', 'hover:bg-slate-800');
+          } else {
+            item.classList.remove('bg-blue-600', 'text-white', 'shadow-sm', 'shadow-blue-500/30');
+            item.classList.add('text-slate-300', 'hover:bg-slate-800');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+      updateActiveNav();
     }
 
     // Copy to Clipboard
@@ -1825,10 +1708,11 @@
       alert('Thank you for reaching out! Your inquiry has been transmitted and Rajat Kumar will respond shortly.');
     }
 
-    // Initialize interactive canvas & 3D effects on DOM ready
+    // Initialize interactive canvas, 3D effects & nav active observer on DOM ready
     document.addEventListener('DOMContentLoaded', () => {
       initHeroParticleCanvas();
       init3DTilt();
+      initActiveNavScroll();
     });
   </script>
 

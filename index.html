@@ -1,13 +1,1384 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajat Kumar | Senior SAP BASIS DBA & RISE Migration Expert</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            slate: {
+              950: '#020617',
+              900: '#0f172a',
+              800: '#1e293b',
+              700: '#334155',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Command Center Styles */
+    body {
+      background-color: #020617;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .glass-panel {
+      background: rgba(30, 41, 59, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-panel-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-panel-hover:hover {
+      background: rgba(30, 41, 59, 0.85);
+      border-color: rgba(59, 130, 246, 0.35);
+      box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .grid-background {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    /* Print Styles for Resume Modal */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printable-resume, #printable-resume * {
+        visibility: visible;
+      }
+      #printable-resume {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        color: black !important;
+        padding: 20px !important;
+      }
+      #printable-resume h1, #printable-resume h2, #printable-resume h3, #printable-resume strong {
+        color: black !important;
+      }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="bg-[#020617] text-slate-100 min-h-screen selection:bg-blue-600 selection:text-white">
+
+  <!-- ================= 1. NAVIGATION BAR ================= -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 bg-[#020617]/90 backdrop-blur-md border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
+        
+        <!-- Left: Logo & Status Dot -->
+        <a href="#overview" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+            RK
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span class="font-bold text-slate-100 text-lg tracking-tight group-hover:text-blue-400 transition-colors">
+                Rajat Kumar
+              </span>
+              <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 ml-2">
+                SAP Basis & RISE Specialist
+              </span>
+            </div>
+            <div class="flex items-center gap-1.5 text-xs text-slate-400">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span class="text-emerald-400 font-medium text-[11px]">
+                System Operational / Available for Opportunities
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Center: Nav Links -->
+        <nav class="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800/80 backdrop-blur-md">
+          <a href="#overview" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Overview</a>
+          <a href="#metrics" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Metrics</a>
+          <a href="#skills" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Core Stack</a>
+          <a href="#experience" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Experience</a>
+          <a href="#projects" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Case Studies</a>
+          <a href="#architecture" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Architecture</a>
+          <a href="#tcode-shell" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">TCode Shell</a>
+          <a href="#contact" class="px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition-all">Contact</a>
+        </nav>
+
+        <!-- Right CTAs -->
+        <div class="hidden sm:flex items-center gap-3">
+          <button onclick="toggleResumeModal(true)" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all hover:border-blue-500/50 hover:text-white group">
+            <i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-400 group-hover:scale-110 transition-transform"></i>
+            <span>Resume PDF</span>
+          </button>
+          <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-lg shadow-blue-500/20 transition-all hover:scale-105">
+            <span>Get in Touch</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="flex items-center gap-2 lg:hidden">
+          <button onclick="toggleMobileMenu()" class="p-2 rounded-lg bg-slate-800 text-slate-300 border border-slate-700">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#090d16] border-b border-slate-800 px-4 pt-3 pb-6 mt-3 space-y-2">
+      <div class="grid grid-cols-2 gap-2 mb-4">
+        <a href="#overview" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Overview</a>
+        <a href="#metrics" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Metrics</a>
+        <a href="#skills" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Core Stack</a>
+        <a href="#experience" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Experience</a>
+        <a href="#projects" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Case Studies</a>
+        <a href="#architecture" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Architecture</a>
+        <a href="#tcode-shell" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">TCode Shell</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="px-3 py-2 rounded-lg text-xs font-medium bg-slate-900 text-slate-300 border border-slate-800">Contact</a>
+      </div>
+      <button onclick="toggleMobileMenu(); toggleResumeModal(true);" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-200 border border-slate-700">
+        <i data-lucide="file-text" class="w-4 h-4 text-blue-400"></i>
+        <span>View Resume PDF</span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ================= 2. HERO SECTION ================= -->
+  <section id="overview" class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden grid-background">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-blue-600/10 blur-[130px] pointer-events-none rounded-full"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Text & CTA -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs font-semibold text-blue-400 shadow-lg">
+            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+            <span>RISE with SAP Specialist</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-slate-300">S/4HANA Architect</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-slate-300">Performance Tuning</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+            Architecting <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-sky-400 bg-clip-text text-transparent">Zero-Downtime</span> SAP Cloud Migrations
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal max-w-2xl">
+            Senior SAP BASIS DBA Specialist & RISE Migration Expert with <strong class="text-white font-semibold">5+ years of experience</strong> architecting, migrating, and optimizing complex enterprise landscapes at <strong class="text-blue-400 font-semibold">Colgate-Palmolive</strong>. Proven track record in S/4HANA transitions, multi-DB administration (HANA, DB2, MaxDB), and maintaining <strong class="text-emerald-400 font-semibold">99.9%+ availability</strong>.
+          </p>
+
+          <div class="flex flex-wrap gap-2 pt-1">
+            <div class="flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>Zero Unplanned Downtime</span>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>SUM & Lift-and-Shift RISE</span>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>56% Migration Downtime Cut</span>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
+              <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <span>1,000+ Mass Transports</span>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 pt-4">
+            <a href="#projects" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-xl shadow-blue-600/25 transition-all hover:scale-[1.02]">
+              <span>Explore Featured Migrations</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+
+            <button onclick="toggleResumeModal(true)" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold text-sm transition-all hover:text-white">
+              <i data-lucide="file-text" class="w-4 h-4 text-blue-400"></i>
+              <span>View Full Resume PDF</span>
+            </button>
+          </div>
+
+          <div class="pt-6 border-t border-slate-800/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-slate-400">
+            <a href="mailto:rajat.bkr@gmail.com" class="flex items-center gap-2 hover:text-blue-400">
+              <i data-lucide="mail" class="w-3.5 h-3.5 text-blue-400"></i>
+              <span class="truncate">rajat.bkr@gmail.com</span>
+            </a>
+            <a href="tel:+918169806939" class="flex items-center gap-2 hover:text-blue-400">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-blue-400"></i>
+              <span>+91 8169806939</span>
+            </a>
+            <div class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-400"></i>
+              <span>Mumbai, Maharashtra</span>
+            </div>
+            <a href="https://www.linkedin.com/in/rajat-kumar-016aa9147" target="_blank" class="flex items-center gap-2 hover:text-blue-400">
+              <i data-lucide="linkedin" class="w-3.5 h-3.5 text-blue-400"></i>
+              <span>LinkedIn Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Telemetry Console Box -->
+        <div class="lg:col-span-5">
+          <div class="glass-panel rounded-2xl p-6 shadow-2xl border border-slate-700/60 space-y-5">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div class="flex items-center gap-2.5">
+                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></div>
+                <div>
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-200">SAP RISE Command Telemetry</h3>
+                  <p class="text-[11px] text-slate-400">Colgate-Palmolive Enterprise Landscape</p>
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-[11px] font-bold">
+                ONLINE • 99.9% SLA
+              </span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-slate-900/90 rounded-xl p-3.5 border border-slate-800">
+                <div class="text-xs text-slate-400 mb-1">Uptime SLA</div>
+                <div class="text-xl font-bold text-white font-mono">99.9%+</div>
+                <div class="text-[10px] text-emerald-400">Zero unplanned downtime</div>
+              </div>
+
+              <div class="bg-slate-900/90 rounded-xl p-3.5 border border-slate-800">
+                <div class="text-xs text-slate-400 mb-1">Cutover Speed</div>
+                <div class="text-xl font-bold text-blue-400 font-mono">1h 21m</div>
+                <div class="text-[10px] text-slate-400">56% Downtime Reduction</div>
+              </div>
+
+              <div class="bg-slate-900/90 rounded-xl p-3.5 border border-slate-800">
+                <div class="text-xs text-slate-400 mb-1">HANA Resource Load</div>
+                <div class="text-xl font-bold text-emerald-400 font-mono">20%</div>
+                <div class="text-[10px] text-slate-400">Reduced from 90% via HEX</div>
+              </div>
+
+              <div class="bg-slate-900/90 rounded-xl p-3.5 border border-slate-800">
+                <div class="text-xs text-slate-400 mb-1">Mass Transports</div>
+                <div class="text-xl font-bold text-sky-400 font-mono">1,000+</div>
+                <div class="text-[10px] text-slate-400">Zero-defect imports</div>
+              </div>
+            </div>
+
+            <div class="bg-[#020617] rounded-xl p-3.5 border border-slate-800 font-mono text-[11px] space-y-1.5">
+              <div class="flex justify-between text-slate-500 text-[10px] border-b border-slate-800/60 pb-1">
+                <span>LIVE_SYS_LOG // SAP_RISE_S4HANA</span>
+                <span class="text-emerald-400">ACTIVE</span>
+              </div>
+              <div class="text-emerald-400">&gt; SUM pre-checks executed: 0 errors, 0 warnings</div>
+              <div class="text-blue-400">&gt; Cloud Connector SCC HA Active: Heap upgraded to 4GB</div>
+              <div class="text-indigo-300">&gt; AWS SES Email Integration: 20+ PRD/Non-PRD operational</div>
+              <div class="text-slate-400">&gt; DB Hints applied: HEX Engine execution active on ACDOCA</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 3. METRICS BANNER ================= -->
+  <section id="metrics" class="py-12 bg-slate-950/80 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 pb-4 border-b border-slate-800/60">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-blue-400">
+            <i data-lucide="trending-up" class="w-4 h-4"></i>
+            <span>Quantifiable Enterprise Impact</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-bold text-white mt-1">
+            Proven Performance & Migration Benchmarks
+          </h2>
+        </div>
+        <p class="text-xs text-slate-400 max-w-md">
+          Verified metrics extracted from Colgate-Palmolive & HGS SAP production landscapes.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="glass-panel glass-panel-hover rounded-xl p-5 border border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <div class="p-2 rounded-lg bg-slate-900 text-emerald-400"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">Uptime</span>
+          </div>
+          <div class="text-3xl font-extrabold text-white font-mono mb-1">99.9%+</div>
+          <div class="text-sm font-semibold text-slate-200 mb-1">System Availability SLA</div>
+          <p class="text-xs text-slate-400">Maintained consistently across business-critical Colgate landscapes.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-xl p-5 border border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <div class="p-2 rounded-lg bg-slate-900 text-blue-400"><i data-lucide="clock" class="w-6 h-6"></i></div>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">3h07m → 1h21m</span>
+          </div>
+          <div class="text-3xl font-extrabold text-white font-mono mb-1">56%</div>
+          <div class="text-sm font-semibold text-slate-200 mb-1">Migration Downtime Cut</div>
+          <p class="text-xs text-slate-400">Slashed DMS maintenance window during SAP HANA copy & upgrade.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-xl p-5 border border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <div class="p-2 rounded-lg bg-slate-900 text-indigo-400"><i data-lucide="truck" class="w-6 h-6"></i></div>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">Moves</span>
+          </div>
+          <div class="text-3xl font-extrabold text-white font-mono mb-1">1,000+</div>
+          <div class="text-sm font-semibold text-slate-200 mb-1">Zero-Defect Transports</div>
+          <p class="text-xs text-slate-400">Executed across Latin America production landscapes during S/4HANA go-lives.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-xl p-5 border border-slate-800">
+          <div class="flex items-center justify-between mb-3">
+            <div class="p-2 rounded-lg bg-slate-900 text-sky-400"><i data-lucide="zap" class="w-6 h-6"></i></div>
+            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-blue-500/10 text-blue-400 border border-blue-500/20">90% → 20%</span>
+          </div>
+          <div class="text-3xl font-extrabold text-white font-mono mb-1">70%</div>
+          <div class="text-sm font-semibold text-slate-200 mb-1">HANA Resource Load Cut</div>
+          <p class="text-xs text-slate-400">Switched execution from Columnar Engine to HEX engine via DB Hints.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 4. TECHNICAL COMPETENCIES (BENTO GRID) ================= -->
+  <section id="skills" class="py-20 bg-[#020617]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400 mb-3">
+            <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+            <span>Core Stack Architecture</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Enterprise Technical Competencies
+          </h2>
+          <p class="text-sm text-slate-400 mt-2 max-w-2xl">
+            Grouped technical skills extracted from 5+ years of SAP Basis DBA administration, RISE cloud cutovers, and automation.
+          </p>
+        </div>
+
+        <!-- Filter Input -->
+        <div class="relative w-full sm:w-64">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input
+            type="text"
+            id="skill-search"
+            onkeyup="filterSkills()"
+            placeholder="Filter skills (e.g. HANA, RISE, DB2)..."
+            class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6" id="bento-skills-grid">
+        
+        <!-- Card 1: SAP Ecosystem -->
+        <div class="lg:col-span-7 glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800 skill-card" data-category="sap">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-5">
+            <div class="flex items-center gap-3">
+              <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-blue-400"><i data-lucide="server" class="w-5 h-5"></i></div>
+              <div>
+                <h3 class="text-lg font-bold text-white">SAP Ecosystem & Core Basis</h3>
+                <p class="text-xs text-slate-400">Enterprise S/4HANA architecture & lifecycle management</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">SAP RISE Migration (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">SAP S/4HANA (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">SAP BTP (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">SUM Software Update Manager (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Cloud Connector HA Shadow</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">STMS Transport Management</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Focused Run / Solution Manager</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">SAP LiveCache</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">ActiveControl & Phantom Automation</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Cloud & Migrations -->
+        <div class="lg:col-span-5 glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800 skill-card" data-category="cloud">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-5">
+            <div class="flex items-center gap-3">
+              <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-sky-400"><i data-lucide="cloud" class="w-5 h-5"></i></div>
+              <div>
+                <h3 class="text-lg font-bold text-white">Cloud & Migrations</h3>
+                <p class="text-xs text-slate-400">RISE Lift-and-Shift, AWS SES & Azure</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">RISE with SAP Cutover (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">AWS Simple Email Service (SES) (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Azure Cloud Infrastructure</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Pre-checks & Cutover Planning</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Hypercare Support (99.9% SLA)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Cross-Functional SOP Authoring</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Database & OS -->
+        <div class="lg:col-span-5 glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800 skill-card" data-category="db">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-5">
+            <div class="flex items-center gap-3">
+              <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-indigo-400"><i data-lucide="database" class="w-5 h-5"></i></div>
+              <div>
+                <h3 class="text-lg font-bold text-white">Database Administration & OS</h3>
+                <p class="text-xs text-slate-400">Multi-database HA/DR & OS Maintenance</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">SAP HANA Administration (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">IBM DB2 Fix Pack Patching (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">MaxDB Maintenance</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">HANA System Replication (HSR)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Database Refresh & Copy</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">HANA Encryption Key Mgmt</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Linux (SUSE/RHEL) & AIX</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Operations & Security -->
+        <div class="lg:col-span-7 glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800 skill-card" data-category="ops">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-5">
+            <div class="flex items-center gap-3">
+              <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-emerald-400"><i data-lucide="sliders" class="w-5 h-5"></i></div>
+              <div>
+                <h3 class="text-lg font-bold text-white">Operations, Security & Performance Tuning</h3>
+                <p class="text-xs text-slate-400">HEX execution engine, SAML 2.0 & automated scripting</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2.5">
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">DB Hints (HEX Execution Engine) (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">SQL Trace Analysis & Lock Mgmt (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-blue-600/20 text-blue-300 border border-blue-500/30 font-semibold">SAML 2.0 & SAP BTP IAS (CORE)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Splunk Cloud & Splunk Cenoti</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Stonebranch Background Scheduling</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Shell & ABAP Automation</span>
+            <span class="skill-tag px-3 py-1.5 rounded-lg text-xs bg-slate-900 text-slate-300 border border-slate-800">Kernel Upgrades & Revision Patches</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 5. PROFESSIONAL EXPERIENCE TIMELINE ================= -->
+  <section id="experience" class="py-20 bg-slate-950/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400 mb-3">
+          <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+          <span>Official Work History</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Professional Experience & Migrations
+        </h2>
+        <p class="text-sm text-slate-400 mt-2 max-w-2xl">
+          Chronological work history from my resume highlighting RISE migrations, zero-downtime cutovers, and infrastructure reliability.
+        </p>
+      </div>
+
+      <div class="relative border-l-2 border-slate-800 ml-4 md:ml-8 space-y-10 pl-6 md:pl-10">
+        
+        <!-- Experience Item 1: Colgate Sr. Associate -->
+        <div class="relative">
+          <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full border-2 border-blue-400 bg-blue-600 text-white flex items-center justify-center">
+            <div class="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-6 border border-slate-800/90 shadow-xl space-y-4">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-2 pb-4 border-b border-slate-800">
+              <div>
+                <div class="flex items-center gap-3">
+                  <h3 class="text-xl font-bold text-white">Sr. Technology Associate</h3>
+                  <span class="px-3 py-0.5 rounded-full text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">Colgate-Palmolive</span>
+                  <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Current Role</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-1">Jun 2022 – Present | Mumbai, Maharashtra</p>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <h4 class="text-xs font-bold uppercase text-blue-400 tracking-wider mb-2">Cloud Migrations & Architecture</h4>
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                  <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span><strong>SAP RISE Cloud Migrations:</strong> Facilitated RISE migrations across MDG landscapes utilizing the SAP Upgrade & RISE Migration methodology; executed pre-checks and SUM uptime/downtime phases within strict maintenance windows.</span></li>
+                  <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span><strong>Lift-and-Shift Execution:</strong> Orchestrated RISE migrations for critical Distributor Management (DMS) and "Hills" systems with zero unplanned downtime.</span></li>
+                  <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span><strong>Hypercare Support:</strong> Maintained 99.9% system uptime and zero business disruption post-go-live.</span></li>
+                  <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span><strong>AWS SES Email Integration:</strong> Migrated legacy SMTP to AWS Simple Email Service (SES) across 20+ production and non-production landscapes.</span></li>
+                  <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span><strong>Cloud Connector HA:</strong> Deployed HA shadow instances and upgraded JVM heap allocation from 2GB to 4GB, eliminating failover connectivity drops.</span></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="text-xs font-bold uppercase text-blue-400 tracking-wider mb-2">Database, Basis & Security Operations</h4>
+                <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                  <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span><strong>Basis Administration:</strong> Delivered 24/7 support managing transports, printer spools, OSS connections, and configuring 200+ secure RFC connections.</span></li>
+                  <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span><strong>System Maintenance:</strong> Performed routine kernel upgrades, IBM Db2 fix pack patching, MaxDB maintenance, and SAP HANA revisions.</span></li>
+                  <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span><strong>Enterprise Security:</strong> Integrated SAML 2.0 with SAP BTP IAS and enforced full SAP HANA encryption key updates.</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Item 2: Colgate IT Associate -->
+        <div class="relative">
+          <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full border-2 border-slate-700 bg-slate-900 text-slate-400 flex items-center justify-center">
+            <div class="w-2 h-2 rounded-full bg-slate-500"></div>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-6 border border-slate-800/90 shadow-xl space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-800">
+              <div>
+                <h3 class="text-xl font-bold text-white">Information Technology Associate</h3>
+                <p class="text-xs text-slate-400">Colgate-Palmolive • Apr 2020 – Jun 2022 | Mumbai, Maharashtra</p>
+              </div>
+            </div>
+
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span>Engineered real-time operational aging dashboards in Looker Studio (Google Data Studio), boosting support agent productivity by 13%.</span></li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span>Maintained a 97.1% QA audit score with >74% First Line Resolution (FLR) rate and zero DSAT ratings.</span></li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span>Promoted to DBA team in recognition of exceptional performance and technical leadership.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Experience Item 3: HGS Analyst -->
+        <div class="relative">
+          <div class="absolute -left-[31px] md:-left-[47px] top-1.5 w-6 h-6 rounded-full border-2 border-slate-700 bg-slate-900 text-slate-400 flex items-center justify-center">
+            <div class="w-2 h-2 rounded-full bg-slate-500"></div>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-6 border border-slate-800/90 shadow-xl space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-800">
+              <div>
+                <h3 class="text-xl font-bold text-white">Technical Support Analyst (Client: Colgate-Palmolive)</h3>
+                <p class="text-xs text-slate-400">HGS - Hinduja Global Solutions • May 2019 – Apr 2020 | Mumbai, Maharashtra</p>
+              </div>
+            </div>
+
+            <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span>Delivered 24/7 global Data Center infrastructure support monitoring SAP, Oracle, Db2, SAP HANA, AIX, Windows, WAN, and LAN environments.</span></li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span>Maintained 100% production system reliability by executing strict SAP and OS-level monitoring protocols.</span></li>
+              <li class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2"></span><span>Earned direct hire conversion to Colgate-Palmolive following exceptional operational performance.</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 6. CASE STUDIES ================= -->
+  <section id="projects" class="py-20 bg-[#020617]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400 mb-3">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+          <span>Key Achievements & Cutover Studies</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Featured Projects & Case Studies
+        </h2>
+        <p class="text-sm text-slate-400 mt-2 max-w-2xl">
+          Major migration projects, performance tuning breakthroughs, and emergency incident restorations from my resume.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Case Study 1 -->
+        <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
+            <div class="p-2.5 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30"><i data-lucide="clock" class="w-5 h-5"></i></div>
+            <div>
+              <h3 class="text-lg font-bold text-white">DMS Migration Downtime Optimization</h3>
+              <p class="text-xs text-emerald-400 font-mono">56% Maintenance Window Cut (3h 07m → 1h 21m)</p>
+            </div>
+          </div>
+          <div class="space-y-2 text-xs sm:text-sm">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-rose-400 font-bold block text-[11px] uppercase mb-1">Challenge</span>
+              <p class="text-slate-300">Critical Distributor Management System (DMS) cutover windows threatened strict business availability limits.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-blue-400 font-bold block text-[11px] uppercase mb-1">Solution</span>
+              <p class="text-slate-300">Engineered HANA DB copy optimizations and strategic parallel resource allocation during SUM pre-checks.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20">
+              <span class="text-emerald-400 font-bold block text-[11px] uppercase mb-1">Impact</span>
+              <p class="text-emerald-200">Slashed downtime by 56% (saving 1 hr 46 mins), ensuring zero unplanned downtime.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
+            <div class="p-2.5 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30"><i data-lucide="zap" class="w-5 h-5"></i></div>
+            <div>
+              <h3 class="text-lg font-bold text-white">HANA Memory Tuning & HEX Engine Switch</h3>
+              <p class="text-xs text-emerald-400 font-mono">System Load Reduced from 90% to 20%</p>
+            </div>
+          </div>
+          <div class="space-y-2 text-xs sm:text-sm">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-rose-400 font-bold block text-[11px] uppercase mb-1">Challenge</span>
+              <p class="text-slate-300">Severe Out-Of-Memory (OOM) crashes and CPU spikes plagued Latin America & DMS landscapes.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-blue-400 font-bold block text-[11px] uppercase mb-1">Solution</span>
+              <p class="text-slate-300">Analyzed SQL traces via ST05 and applied DB Hints to force execution to the High-Performance Execution (HEX) engine.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20">
+              <span class="text-emerald-400 font-bold block text-[11px] uppercase mb-1">Impact</span>
+              <p class="text-emerald-200">Eliminated OOM crashes, dropped load to 20%, and cut query execution times down to ~3 minutes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 3 -->
+        <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
+            <div class="p-2.5 rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30"><i data-lucide="truck" class="w-5 h-5"></i></div>
+            <div>
+              <h3 class="text-lg font-bold text-white">Zero-Defect Mass Transport Movements</h3>
+              <p class="text-xs text-emerald-400 font-mono">1,000+ Production Movements with 100% Success</p>
+            </div>
+          </div>
+          <div class="space-y-2 text-xs sm:text-sm">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-rose-400 font-bold block text-[11px] uppercase mb-1">Challenge</span>
+              <p class="text-slate-300">EU S/4HANA consolidation required massive transport deployment across LA production landscapes.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-blue-400 font-bold block text-[11px] uppercase mb-1">Solution</span>
+              <p class="text-slate-300">Structured transport sequence staging, automated STMS verification, and ActiveControl tracking.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20">
+              <span class="text-emerald-400 font-bold block text-[11px] uppercase mb-1">Impact</span>
+              <p class="text-emerald-200">Imported 1,000+ mass transports into production with zero defects and zero business disruption.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 4 -->
+        <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+          <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
+            <div class="p-2.5 rounded-xl bg-amber-600/20 text-amber-400 border border-amber-500/30"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
+            <div>
+              <h3 class="text-lg font-bold text-white">Critical P1 Emergency Restorations</h3>
+              <p class="text-xs text-emerald-400 font-mono">Malaysia Invoicing & PLM SDS Rapid Recovery</p>
+            </div>
+          </div>
+          <div class="space-y-2 text-xs sm:text-sm">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-rose-400 font-bold block text-[11px] uppercase mb-1">Challenge</span>
+              <p class="text-slate-300">Regional invoicing halt in Malaysia due to ADS font rendering errors; PLM SDS generation failure.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+              <span class="text-blue-400 font-bold block text-[11px] uppercase mb-1">Solution</span>
+              <p class="text-slate-300">Applied SAP Note 1565508 font embedding for ADS; resolved WWI admin account corruption for PLM.</p>
+            </div>
+            <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20">
+              <span class="text-emerald-400 font-bold block text-[11px] uppercase mb-1">Impact</span>
+              <p class="text-emerald-200">Restored regional invoicing and SDS document generation in record time, avoiding operational trade loss.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 7. ARCHITECTURE WORKFLOW ================= -->
+  <section id="architecture" class="py-20 bg-slate-950/80 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-14 text-center max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400 mb-3">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+          <span>Structured Methodology</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          SAP Basis & RISE Migration Approach
+        </h2>
+        <p class="text-sm text-slate-400 mt-2">
+          4-stage operational framework engineered to maintain 99.9%+ availability and zero-unplanned-downtime cutovers.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-blue-400"><i data-lucide="activity" class="w-6 h-6"></i></div>
+            <span class="text-2xl font-extrabold text-slate-700 font-mono">01</span>
+          </div>
+          <div class="text-[11px] font-bold text-blue-400 uppercase tracking-wider mb-1">Continuous Telemetry</div>
+          <h3 class="text-base font-bold text-white mb-2">Proactive Health Audit & EWA Analysis</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Evaluation of EarlyWatch Alert (EWA) reports, ST04 buffer hit ratios, and DB growth trends across landscapes.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-emerald-400"><i data-lucide="sliders" class="w-6 h-6"></i></div>
+            <span class="text-2xl font-extrabold text-slate-700 font-mono">02</span>
+          </div>
+          <div class="text-[11px] font-bold text-blue-400 uppercase tracking-wider mb-1">Engine Optimization</div>
+          <h3 class="text-base font-bold text-white mb-2">Bottleneck Diagnostics & Memory Tuning</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">SQL trace analysis via ST05, applying DB Hints for HEX engine execution, and optimizing Cloud Connector heap allocations.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-indigo-400"><i data-lucide="lock" class="w-6 h-6"></i></div>
+            <span class="text-2xl font-extrabold text-slate-700 font-mono">03</span>
+          </div>
+          <div class="text-[11px] font-bold text-blue-400 uppercase tracking-wider mb-1">Zero-Trust Security</div>
+          <h3 class="text-base font-bold text-white mb-2">Patching & Security Hardening</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Executing SUM patch stacks, SAML 2.0 multi-factor integration with SAP BTP IAS, and HANA encryption key updates.</p>
+        </div>
+
+        <div class="glass-panel glass-panel-hover rounded-2xl p-6 border border-slate-800">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-sky-400"><i data-lucide="refresh-cw" class="w-6 h-6"></i></div>
+            <span class="text-2xl font-extrabold text-slate-700 font-mono">04</span>
+          </div>
+          <div class="text-[11px] font-bold text-blue-400 uppercase tracking-wider mb-1">Resilient Failover</div>
+          <h3 class="text-base font-bold text-white mb-2">High Availability & DR Validation</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Configuring Cloud Connector shadow instances, HANA System Replication (HSR), and zero-unplanned-downtime cutovers.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 8. INTERACTIVE SAP TCODE TERMINAL ================= -->
+  <section id="tcode-shell" class="py-20 bg-[#020617]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400 mb-3">
+            <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+            <span>Interactive SAP Command Reference</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            SAP Basis TCode & Administration Terminal
+          </h2>
+          <p class="text-sm text-slate-400 mt-2 max-w-2xl">
+            Quick-reference terminal highlighting core SAP Transaction Codes, SQL trace snippets, and transport commands.
+          </p>
+        </div>
+
+        <div class="relative w-full md:w-72">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input
+            type="text"
+            id="tcode-search"
+            onkeyup="filterTCodes()"
+            placeholder="Search TCode (e.g. ST04, SM12, SUM)..."
+            class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- TCode List Cards -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[500px] overflow-y-auto pr-2" id="tcode-cards-container">
+          
+          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('SM12', 'Lock Entry Administration', 'SELECT * FROM ENQ_TAB WHERE MANDT = 100;')">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nSM12</span>
+              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Lock Mgmt</span>
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1">Lock Entry Administration</h3>
+            <p class="text-xs text-slate-400">Display and release SAP lock entries to resolve table locking.</p>
+          </div>
+
+          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('SM13', 'Update Requests Monitor', 'V1 Update Status: OK | V2 Update Status: QUEUED')">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nSM13</span>
+              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Lock Mgmt</span>
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1">Update Requests Monitor</h3>
+            <p class="text-xs text-slate-400">Monitor and re-process failed V1 and V2 asynchronous update tasks.</p>
+          </div>
+
+          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('SM66', 'Global Process Overview', 'STATUS: Running | TYPE: DIA | TIME: 180s | TABLE: BSEG')">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nSM66</span>
+              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Performance</span>
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1">Global Work Process Overview</h3>
+            <p class="text-xs text-slate-400">Real-time visibility into running work processes across all app servers.</p>
+          </div>
+
+          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('ST04', 'Database Performance Monitor', 'HANA Memory Allocated: 256GB / 384GB | Hit Ratio: 99.8%')">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nST04</span>
+              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Database</span>
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1">Database Performance Monitor</h3>
+            <p class="text-xs text-slate-400">Deep-dive SAP HANA / DB2 memory allocations & buffer hit ratios.</p>
+          </div>
+
+          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('ST05', 'SQL & Performance Trace', 'WITH HINT(USE_HEX_PLAN) SELECT * FROM ACDOCA...')">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nST05</span>
+              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Performance</span>
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1">SQL & Performance Trace</h3>
+            <p class="text-xs text-slate-400">Activate SQL & RFC traces to analyze execution plans and apply DB Hints.</p>
+          </div>
+
+          <div class="glass-panel glass-panel-hover rounded-xl p-4 border border-slate-800 tcode-card cursor-pointer" onclick="runTCodeLog('STMS', 'Transport Management System', 'tp import <TR_ID> <SID> u128')">
+            <div class="flex items-center justify-between mb-2">
+              <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 font-mono text-xs font-bold text-blue-400">/nSTMS</span>
+              <span class="text-[10px] font-mono text-slate-500 bg-slate-900 px-2 py-0.5 rounded">Transports</span>
+            </div>
+            <h3 class="text-sm font-bold text-white mb-1">Transport Management System</h3>
+            <p class="text-xs text-slate-400">Administer transport routes and mass transport deployments across DEV/QA/PRD.</p>
+          </div>
+
+        </div>
+
+        <!-- Terminal Log Box -->
+        <div class="lg:col-span-5">
+          <div class="bg-[#020617] rounded-2xl border border-slate-800 p-5 font-mono text-xs shadow-2xl flex flex-col h-full justify-between space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                <span class="text-slate-400 text-[11px] ml-2">sapgui_tcode_shell.sh</span>
+              </div>
+              <span class="text-emerald-400 text-[10px] bg-emerald-500/10 px-2 py-0.5 rounded font-bold">CONNECTED: PRD_HANA_100</span>
+            </div>
+
+            <div class="space-y-3 py-2 text-slate-300 min-h-[180px]">
+              <div class="text-slate-500 text-[11px]"># SAP BASIS DBA COMMAND CONSOLE -- RAJAT KUMAR</div>
+              <div class="text-blue-400">&gt; ACTIVE LANDSCAPE: S/4HANA 2023 RISE ON AWS</div>
+              <div id="tcode-output" class="p-3 rounded-lg bg-slate-900 border border-slate-800 text-slate-200 whitespace-pre-wrap leading-relaxed text-[11px]">
+                Click any TCode card on the left to simulate execution trace...
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800 space-y-2">
+              <div class="text-[11px] text-slate-400 flex items-center justify-between">
+                <span>Copy HEX DB Hint Command:</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[11px]">
+                <span class="truncate">WITH HINT(USE_HEX_PLAN) SELECT * FROM ACDOCA</span>
+                <button onclick="copyToClipboard('WITH HINT(USE_HEX_PLAN) SELECT * FROM ACDOCA', this)" class="p-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 9. AWARDS, CERTIFICATIONS & EDUCATION ================= -->
+  <section class="py-20 bg-slate-950/80 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400 mb-3">
+          <i data-lucide="award" class="w-3.5 h-3.5"></i>
+          <span>Recognitions & Credentials</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Awards, Certifications & Education
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left: Corporate Awards & Education -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+            <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
+              <i data-lucide="award" class="w-5 h-5"></i>
+              <span>Corporate Honors (Colgate-Palmolive)</span>
+            </h3>
+
+            <div class="space-y-3">
+              <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                <h4 class="text-sm font-bold text-amber-300">Chairman's You Can Make A Difference Award</h4>
+                <p class="text-xs text-slate-300 mt-1">Recognizing outstanding technical initiative and system reliability during critical RISE migrations.</p>
+              </div>
+
+              <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                <h4 class="text-sm font-bold text-amber-300">Champion of the Month</h4>
+                <p class="text-xs text-slate-300 mt-1">Awarded for exceptional operational performance and rapid P1 incident resolution.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+            <h3 class="text-lg font-bold text-indigo-400 flex items-center gap-2">
+              <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+              <span>Education</span>
+            </h3>
+
+            <div class="space-y-3">
+              <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                <div class="flex justify-between font-bold text-sm text-white">
+                  <span>Postgraduate Degree, Data Science</span>
+                  <span class="text-blue-400 text-xs font-mono">2021 – 2022</span>
+                </div>
+                <p class="text-xs text-slate-400">IIIT Bangalore (Distance Learning)</p>
+              </div>
+
+              <div class="bg-slate-900 p-4 rounded-xl border border-slate-800">
+                <div class="flex justify-between font-bold text-sm text-white">
+                  <span>B.E., Electronics & Communications Engineering</span>
+                  <span class="text-blue-400 text-xs font-mono">2015 – 2019</span>
+                </div>
+                <p class="text-xs text-slate-400">Bharati Vidyapeeth College of Engineering, Navi Mumbai</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Certifications -->
+        <div class="lg:col-span-6">
+          <div class="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4 h-full">
+            <h3 class="text-lg font-bold text-blue-400 flex items-center gap-2">
+              <i data-lucide="bookmark" class="w-5 h-5"></i>
+              <span>Verified Certifications</span>
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <div>
+                  <div class="text-xs font-bold text-slate-200">Data Analytics Fundamental</div>
+                  <div class="text-[10px] text-blue-400">AWS</div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <div>
+                  <div class="text-xs font-bold text-slate-200">SQL</div>
+                  <div class="text-[10px] text-blue-400">HackerRank</div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <div>
+                  <div class="text-xs font-bold text-slate-200">AI Aware - Analytics Literacy</div>
+                  <div class="text-[10px] text-blue-400">Colgate-Palmolive</div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <div>
+                  <div class="text-xs font-bold text-slate-200">Learning Splunk</div>
+                  <div class="text-[10px] text-blue-400">LinkedIn Learning</div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <div>
+                  <div class="text-xs font-bold text-slate-200">Linux Administration</div>
+                  <div class="text-[10px] text-blue-400">Udemy</div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <div>
+                  <div class="text-xs font-bold text-slate-200">Google Data Studio</div>
+                  <div class="text-[10px] text-blue-400">Udemy</div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <div>
+                  <div class="text-xs font-bold text-slate-200">SAP Basis Foundation</div>
+                  <div class="text-[10px] text-blue-400">Udemy</div>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <div>
+                  <div class="text-xs font-bold text-slate-200">SAP Joule Studio</div>
+                  <div class="text-[10px] text-blue-400">SAP Learnings</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 10. CONTACT SECTION ================= -->
+  <section id="contact" class="py-20 bg-slate-950 relative border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400 mb-3">
+          <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+          <span>Direct Channel</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Get In Touch
+        </h2>
+        <p class="text-sm text-slate-400 mt-2 max-w-2xl">
+          Open for SAP RISE Cloud Migration roles, Senior SAP Basis DBA architect opportunities, and consulting.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <div class="lg:col-span-5 space-y-4">
+          <div class="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-lg bg-blue-600/10 text-blue-400"><i data-lucide="mail" class="w-4 h-4"></i></div>
+                <div>
+                  <div class="text-[11px] text-slate-400 font-semibold uppercase">Email</div>
+                  <a href="mailto:rajat.bkr@gmail.com" class="text-xs sm:text-sm font-semibold text-white hover:text-blue-400">rajat.bkr@gmail.com</a>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('rajat.bkr@gmail.com', this)" class="p-2 rounded bg-slate-800 text-slate-400"><i data-lucide="copy" class="w-4 h-4"></i></button>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-lg bg-emerald-600/10 text-emerald-400"><i data-lucide="phone" class="w-4 h-4"></i></div>
+                <div>
+                  <div class="text-[11px] text-slate-400 font-semibold uppercase">Phone</div>
+                  <a href="tel:+918169806939" class="text-xs sm:text-sm font-semibold text-white hover:text-emerald-400">+91 8169806939</a>
+                </div>
+              </div>
+              <button onclick="copyToClipboard('+918169806939', this)" class="p-2 rounded bg-slate-800 text-slate-400"><i data-lucide="copy" class="w-4 h-4"></i></button>
+            </div>
+
+            <a href="https://www.linkedin.com/in/rajat-kumar-016aa9147" target="_blank" class="w-full flex items-center justify-center gap-2 p-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 text-xs font-semibold">
+              <i data-lucide="linkedin" class="w-4 h-4 text-blue-400"></i>
+              <span>Connect on LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-2xl">
+            <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+              <i data-lucide="message-square" class="w-5 h-5 text-blue-400"></i>
+              <span>Send Direct Inquiry</span>
+            </h3>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1">Your Name</label>
+                  <input type="text" required placeholder="Hiring Manager / SAP Lead" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white focus:outline-none focus:border-blue-500" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1">Your Email</label>
+                  <input type="email" required placeholder="name@company.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white focus:outline-none focus:border-blue-500" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Subject</label>
+                <input type="text" required value="SAP RISE / Basis Opportunity" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white focus:outline-none focus:border-blue-500" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Message</label>
+                <textarea rows="4" required placeholder="Detail your landscape requirements or opportunity..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white focus:outline-none focus:border-blue-500"></textarea>
+              </div>
+
+              <button type="submit" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs shadow-lg">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Transmit Inquiry</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= 11. FOOTER ================= -->
+  <footer class="py-8 bg-[#020617] border-t border-slate-900 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-[10px]">RK</div>
+        <span>© 2026 Rajat Kumar. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span>
+        <span>System Status: <strong class="text-emerald-400">Operational (99.9% SLA)</strong></span>
+      </div>
+      <a href="#overview" class="text-slate-400 hover:text-white">Back to Top ↑</a>
+    </div>
+  </footer>
+
+
+  <!-- ================= 12. PRINTABLE RESUME PDF MODAL ================= -->
+  <div id="resume-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+    <div class="bg-[#0b1329] border border-slate-700 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden my-auto">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between p-4 bg-slate-900 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs">RK</div>
+          <h3 class="text-sm font-bold text-white">Rajat Kumar - Resume Document Preview</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-600 text-white flex items-center gap-1.5">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span>Print / Save PDF</span>
+          </button>
+          <button onclick="toggleResumeModal(false)" class="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable Resume Content -->
+      <div id="printable-resume" class="p-8 overflow-y-auto space-y-6 text-slate-200 text-xs sm:text-sm bg-slate-950">
+        
+        <div class="text-center pb-4 border-b border-slate-800 space-y-1">
+          <h1 class="text-2xl font-bold text-blue-400">RAJAT KUMAR</h1>
+          <p class="text-xs font-semibold text-slate-300 uppercase">Senior SAP BASIS DBA Specialist & SAP RISE Migration Expert</p>
+          <p class="text-xs text-slate-400">Phone: +91 8169806939 | Email: rajat.bkr@gmail.com | LinkedIn: linkedin.com/in/rajat-kumar-016aa9147</p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase text-blue-400 border-b border-blue-500/30 pb-1 mb-2">SUMMARY</h2>
+          <p class="text-slate-300">Senior SAP BASIS DBA Specialist & SAP RISE Migration Expert with 5+ years of experience architecting, migrating, and optimizing complex enterprise landscapes. Proven track record of leading end-to-end SAP RISE cloud migrations, S/4HANA transitions, and multi-database administration (HANA, DB2, MaxDB). Adept at performance tuning and proactive troubleshooting, consistently maintaining 99.9%+ system availability and minimizing cutover downtime for business-critical environments.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase text-blue-400 border-b border-blue-500/30 pb-1 mb-2">KEY SKILLS</h2>
+          <p class="text-slate-300">SAP RISE Migration, SAP S/4HANA, SAP BTP, SUM (Software Update Manager), Cloud Connector (HA Configuration), AWS SES Integration, SAP HANA, IBM DB2, MaxDB, SAP LiveCache, Database Refresh, Data Compression, Reindexing, HANA Encryption Key Management, SQL Trace Analysis, DB Hints (Traditional to HEX Execution engines), Lock Management (SM12/SM13/SM66), Memory Optimization, SAP transports, SAP Performance Analysis (Basis Tcodes), Shell Scripting, Phantom Automation, ActiveControl, Stonebranch, Libelle System Copy, Splunk Monitoring, GitHub.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase text-blue-400 border-b border-blue-500/30 pb-1 mb-2">PROFESSIONAL EXPERIENCE</h2>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between font-bold text-slate-100">
+                <span>Sr. Technology Associate — Colgate-Palmolive</span>
+                <span class="text-blue-400 font-mono">Jun 2022 – Present</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-300 mt-1">
+                <li>Facilitated RISE migrations across MDG landscapes utilizing SAP Upgrade & RISE Migration methodology; executed SUM pre-checks within strict maintenance windows.</li>
+                <li>Orchestrated Lift-and-Shift RISE migrations for critical Distributor Management (DMS) and "Hills" systems with zero unplanned downtime.</li>
+                <li>Executed end-to-end migration from legacy SMTP to AWS Simple Email Service (SES) across 20+ production and non-production landscapes.</li>
+                <li>Re-architected SAP Cloud Connector (SCC) by deploying HA shadow instances and upgrading JVM heap from 2GB to 4GB.</li>
+                <li>Delivered 24/7 support managing transports, printer spools, OSS connections, and configuring 200+ secure RFC connections.</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-100">
+                <span>Information Technology Associate — Colgate-Palmolive</span>
+                <span class="text-blue-400 font-mono">Apr 2020 – Jun 2022</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-300 mt-1">
+                <li>Engineered automated real-time operational aging dashboards in Looker Studio, boosting productivity by 13%.</li>
+                <li>Maintained a 97.1% QA audit score with >74% First Line Resolution (FLR) rate and zero DSAT ratings.</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-100">
+                <span>Technical Support Analyst — HGS (Client: Colgate-Palmolive)</span>
+                <span class="text-blue-400 font-mono">May 2019 – Apr 2020</span>
+              </div>
+              <ul class="list-disc list-inside space-y-1 text-slate-300 mt-1">
+                <li>Delivered end-to-end Data Center support monitoring SAP, Oracle, Db2, SAP HANA, AIX, Windows, WAN, and LAN environments.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase text-blue-400 border-b border-blue-500/30 pb-1 mb-2">KEY HIGHLIGHT ACCOMPLISHMENTS</h2>
+          <ul class="list-disc list-inside space-y-1 text-slate-300">
+            <li><strong>Downtime Optimization:</strong> Slashed migration downtime by 56% (3h 07m → 1h 21m) across DMS landscapes.</li>
+            <li><strong>Mass Transport Execution:</strong> Executed 1,000+ zero-defect mass transports across Latin America production systems.</li>
+            <li><strong>HANA Performance Tuning:</strong> Eliminated OOM crashes and CPU spikes; applied DB Hints for HEX engine execution, reducing load from 90% to 20%.</li>
+            <li><strong>P1 Emergency Recovery:</strong> Restored Malaysia invoicing outage (ADS font embedding Note 1565508) and PLM SDS generation (WWI AD fix).</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase text-blue-400 border-b border-blue-500/30 pb-1 mb-2">AWARDS & EDUCATION</h2>
+          <p class="text-slate-300"><strong>Chairman's You Can Make A Difference Award</strong> & <strong>Champion of the Month</strong> (Colgate-Palmolive)</p>
+          <p class="text-slate-300 mt-1"><strong>Postgraduate Degree in Data Science</strong> (IIIT Bangalore) | <strong>B.E. in Electronics & Communications</strong> (Bharati Vidyapeeth)</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ================= INLINE JAVASCRIPT LOGIC ================= -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Resume Modal Toggle
+    function toggleResumeModal(show) {
+      const modal = document.getElementById('resume-modal');
+      if (show) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+
+    // Filter Skills
+    function filterSkills() {
+      const query = document.getElementById('skill-search').value.toLowerCase();
+      const tags = document.querySelectorAll('.skill-tag');
+      tags.forEach(tag => {
+        if (tag.textContent.toLowerCase().includes(query)) {
+          tag.style.display = 'inline-block';
+        } else {
+          tag.style.display = query ? 'none' : 'inline-block';
+        }
+      });
+    }
+
+    // Filter TCodes
+    function filterTCodes() {
+      const query = document.getElementById('tcode-search').value.toLowerCase();
+      const cards = document.querySelectorAll('.tcode-card');
+      cards.forEach(card => {
+        if (card.textContent.toLowerCase().includes(query)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Run TCode Log in Shell
+    function runTCodeLog(tcode, name, snippet) {
+      const output = document.getElementById('tcode-output');
+      output.innerHTML = `<span class="text-emerald-400">[SAP_CMD_EXEC] TCode: /n${tcode} (${name})</span>\nExecuting diagnostic trace... OK.\nResult snippet: ${snippet}`;
+    }
+
+    // Copy to Clipboard
+    function copyToClipboard(text, btn) {
+      navigator.clipboard.writeText(text);
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = `<span class="text-emerald-400 text-[10px] font-bold">Copied!</span>`;
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        lucide.createIcons();
+      }, 2000);
+    }
+
+    // Form Submission
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      alert('Thank you for reaching out! Your inquiry has been recorded and Rajat Kumar will get back to you shortly.');
+    }
+  </script>
+
+</body>
+</html>

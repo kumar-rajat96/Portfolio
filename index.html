@@ -694,12 +694,12 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
         <!-- Case Study 1 -->
-        <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+        <div class="lg:col-span-4 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
           <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
             <div class="p-2.5 rounded-xl bg-blue-600/20 text-blue-400 border border-blue-500/30"><i data-lucide="clock" class="w-5 h-5"></i></div>
             <div>
-              <h3 class="text-lg font-bold text-white">DMS Migration Downtime Optimization</h3>
-              <p class="text-xs text-emerald-400 font-mono">56% Maintenance Window Cut (3h 07m → 1h 21m)</p>
+              <h3 class="text-base sm:text-lg font-bold text-white">DMS Migration Downtime Optimization</h3>
+              <p class="text-xs text-emerald-400 font-mono">56% Maintenance Cut (3h 07m → 1h 21m)</p>
             </div>
           </div>
           <div class="space-y-2 text-xs sm:text-sm">
@@ -719,12 +719,12 @@
         </div>
 
         <!-- Case Study 2 -->
-        <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+        <div class="lg:col-span-4 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
           <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
             <div class="p-2.5 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/30"><i data-lucide="zap" class="w-5 h-5"></i></div>
             <div>
-              <h3 class="text-lg font-bold text-white">HANA Memory Tuning & HEX Engine Switch</h3>
-              <p class="text-xs text-emerald-400 font-mono">System Load Reduced from 90% to 20%</p>
+              <h3 class="text-base sm:text-lg font-bold text-white">HANA Memory Tuning & HEX Engine Switch</h3>
+              <p class="text-xs text-emerald-400 font-mono">System Load Reduced 90% → 20%</p>
             </div>
           </div>
           <div class="space-y-2 text-xs sm:text-sm">
@@ -744,12 +744,12 @@
         </div>
 
         <!-- Case Study 3 -->
-        <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+        <div class="lg:col-span-4 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
           <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
             <div class="p-2.5 rounded-xl bg-indigo-600/20 text-indigo-400 border border-indigo-500/30"><i data-lucide="truck" class="w-5 h-5"></i></div>
             <div>
-              <h3 class="text-lg font-bold text-white">Zero-Defect Mass Transport Movements</h3>
-              <p class="text-xs text-emerald-400 font-mono">1,000+ Production Movements with 100% Success</p>
+              <h3 class="text-base sm:text-lg font-bold text-white">Zero-Defect Mass Transport Movements</h3>
+              <p class="text-xs text-emerald-400 font-mono">1,000+ Movements with 100% Success</p>
             </div>
           </div>
           <div class="space-y-2 text-xs sm:text-sm">
@@ -769,26 +769,54 @@
         </div>
 
         <!-- Case Study 4 -->
-        <div class="lg:col-span-6 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+        <div class="lg:col-span-12 glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
           <div class="flex items-center gap-3 pb-3 border-b border-slate-800">
             <div class="p-2.5 rounded-xl bg-amber-600/20 text-amber-400 border border-amber-500/30"><i data-lucide="alert-triangle" class="w-5 h-5"></i></div>
             <div>
               <h3 class="text-lg font-bold text-white">Critical P1 Emergency Restorations</h3>
-              <p class="text-xs text-emerald-400 font-mono">Malaysia Invoicing & PLM SDS Rapid Recovery</p>
+              <p class="text-xs text-emerald-400 font-mono">Segregated Rapid Recovery: Malaysia Invoicing & PLM SDS Outages</p>
             </div>
           </div>
-          <div class="space-y-2 text-xs sm:text-sm">
-            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
-              <span class="text-rose-400 font-bold block text-[11px] uppercase mb-1">Challenge</span>
-              <p class="text-slate-300">Regional invoicing halt in Malaysia due to ADS font rendering errors; PLM SDS generation failure.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-1">
+            <!-- Issue 1: Malaysia Invoicing Halt -->
+            <div class="space-y-2 text-xs sm:text-sm bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <div class="flex items-center gap-2 pb-2 border-b border-slate-800/80">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                <h4 class="font-extrabold text-amber-300 text-sm">Malaysia Invoicing Halt</h4>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <span class="text-rose-400 font-bold block text-[11px] uppercase mb-1">Challenge</span>
+                <p class="text-slate-300 leading-relaxed">Regional invoicing halted in Malaysia post-RISE go-live due to multi-byte character font rendering failures in Adobe Document Services (ADS).</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <span class="text-blue-400 font-bold block text-[11px] uppercase mb-1">Solution</span>
+                <p class="text-slate-300 leading-relaxed">Diagnosed multi-byte character font rendering failures in ADS and activated font embedding via SAP Note 1565508.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20">
+                <span class="text-emerald-400 font-bold block text-[11px] uppercase mb-1">Impact</span>
+                <p class="text-emerald-200 leading-relaxed">Restored a 3-hour regional invoicing outage post-RISE go-live in record time, eliminating financial trade loss.</p>
+              </div>
             </div>
-            <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
-              <span class="text-blue-400 font-bold block text-[11px] uppercase mb-1">Solution</span>
-              <p class="text-slate-300">Applied SAP Note 1565508 font embedding for ADS; resolved WWI admin account corruption for PLM.</p>
-            </div>
-            <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20">
-              <span class="text-emerald-400 font-bold block text-[11px] uppercase mb-1">Impact</span>
-              <p class="text-emerald-200">Restored regional invoicing and SDS document generation in record time, avoiding operational trade loss.</p>
+
+            <!-- Issue 2: PLM Safety Data Sheet Outage -->
+            <div class="space-y-2 text-xs sm:text-sm bg-slate-950/60 p-4 rounded-xl border border-slate-800">
+              <div class="flex items-center gap-2 pb-2 border-b border-slate-800/80">
+                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                <h4 class="font-extrabold text-purple-300 text-sm">PLM Safety Data Sheet Outage</h4>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <span class="text-rose-400 font-bold block text-[11px] uppercase mb-1">Challenge</span>
+                <p class="text-slate-300 leading-relaxed">Critical P1 outage affecting Safety Data Sheet (SDS) generation in PLM due to WWI administrative account corruption.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <span class="text-blue-400 font-bold block text-[11px] uppercase mb-1">Solution</span>
+                <p class="text-slate-300 leading-relaxed">Diagnosed WWI administrative account corruption and guided Active Directory teams through structured account recreation.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-emerald-950/30 border border-emerald-500/20">
+                <span class="text-emerald-400 font-bold block text-[11px] uppercase mb-1">Impact</span>
+                <p class="text-emerald-200 leading-relaxed">Rapidly mitigated critical SDS document generation failure, ensuring compliant international product shipments.</p>
+              </div>
             </div>
           </div>
         </div>
